@@ -1,6 +1,8 @@
 import argparse
 import parser
 import ConfigParser
+import text_manipulator
+import markov_generator
 from stream_listener import stream_listener
 from tweet import Tweet
 import tweepy
@@ -12,7 +14,7 @@ from tweepy import Stream
 CONFIG="configuration/keys.ini"
 def main():
 
-	# Parse arguments from command line
+    # Parse arguments from command line
     args = parser.get_args()
     config = ConfigParser.ConfigParser()
 
@@ -38,10 +40,17 @@ def main():
     print "Collecting tweets..."
     stream.filter(track=args.keywords)
 
-    # TEST: print tweets
+    tweet_text = ""
+
     for twt in tweets:
-        twt.disp()
-        print
+        tweet_text += twt.clean_text() + ". "
+
+    markov = markov_generator.markov_text_generator(tweet_text)
+    sentence = markov.generate_markov_text(100)
+    print sentence
+
+
+    
 
 if __name__ == '__main__':
     main()

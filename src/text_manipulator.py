@@ -24,7 +24,6 @@ def generate_sentence(text):
 	for i in range(5):
 		print(text_model.make_short_sentence(100))
 
-
 with open("random.txt") as f:
 	text1 = f.read()
 
