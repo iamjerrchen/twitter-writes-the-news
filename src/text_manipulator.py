@@ -1,4 +1,9 @@
+# will need to run this the very first time to get stopwords file
+# import nltk
+# nltk.download('stopwords')
+
 from nltk.corpus import stopwords
+import markovify
 
 
 class text_manipulator:
@@ -13,4 +18,11 @@ class text_manipulator:
 # testing stopword removal
 # man = sentence_manipulator()
 # man.remove_stopwords("a long string of text about him and her")
+
+def generate_sentence(text):
+	text_model = markovify.Text(text)
+	for i in range(5):
+		print(text_model.make_short_sentence(140))
+
+
 
