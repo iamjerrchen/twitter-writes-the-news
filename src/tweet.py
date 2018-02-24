@@ -11,10 +11,6 @@ class Tweet:
         self.verified = json_tweet["user"]["verified"]
         self.lang = json_tweet["user"]["lang"]
         self.truncated = json_tweet["truncated"]
-        print "==============="
-        print self.lang
-        print self.text
-        print "==============="
 
     def disp(self):
         print u"name: {0}".format(self.screen_name)

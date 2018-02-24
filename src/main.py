@@ -1,7 +1,6 @@
 import argparse
 import parser
 import ConfigParser
-import text_manipulator
 import markov_generator
 from stream_listener import stream_listener
 from tweet import Tweet
