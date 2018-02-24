@@ -1,3 +1,4 @@
+import argparse
 import parser
 import ConfigParser
 from stream_listener import stream_listener
@@ -24,12 +25,16 @@ def main():
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_secret)
 
+    if args.keywords is None or len(args.keywords) == 0:
+        raise argparse.ArgumentTypeError("No keywords!")
+
     # Testing stream listener
     tweets = []
-    testListener = stream_listener(tweets, 10)
-    stream = tweepy.Stream(auth=auth, listener=testListener, timeout=30)
+    testListener = stream_listener(tweets, args.max_tweets)
+    stream = tweepy.Stream(auth=auth, listener=testListener, timeout=args.timeout*60)
 
-    stream.filter(track=["donald trump"])
+    print "Collecting tweets..."
+    stream.filter(track=args.keywords)
 
     for twt in tweets:
         twt.disp()

@@ -13,7 +13,11 @@ class stream_listener(tweepy.StreamListener):
     def on_data(self, data):
         elapsed = time.time() - self.start
         if (self.curr_tweets < self.max_tweets):
-            parsed_tweet = Tweet(data)
+            try:
+                parsed_tweet = Tweet(data)
+            except KeyError as e:
+                return True
+
             if parsed_tweet.lang == "en" and not parsed_tweet.truncated:
                 self.tweets.append(parsed_tweet)
                 self.curr_tweets += 1
