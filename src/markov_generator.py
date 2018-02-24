@@ -1,47 +1,60 @@
 import numpy as np
 
 class markov_text_generator:
-	def __init__(self, text):
+	def __init__(self, text, state_size):
 		self.cache = {} # dictionary to predict next word
-		#self.state_size = state_size # 
+		self.state_size = state_size # 
 		self.words = text.split()
 		self.word_size = len(self.words)
 		self._database() # populate dictionary with words
 
-	def _pent(self):
-		# generates triples from the given data string.
-		# if string is: "What a lovely day"
+	def _n_state(self):
+		# generates n size tuples from the given data string.
+		# increasing state_size will match sentence closer to the data set
+		# if state_size is 3 and string is: "What a lovely day"
 		# generates: (What, a , lovely) and (a, lovely, day)
-		if self.word_size < 5:
+		if self.word_size < self.state_size + 1:
 			return
 
-		for i in range(self.word_size - 4):
+		for i in range(self.word_size - self.state_size):
 			# like return but returns a generator to be used once
-			yield (self.words[i], self.words[i+1], self.words[i+2], self.words[i+3], self.words[i+4])
+			yield tuple([self.words[i+idx] for idx in range(self.state_size + 1)])
 
+	# populate cache with keys and predicted next word
 	def _database(self):
-		for w1, w2, w3, w4, w5 in self._pent():
-			key = (w1, w2, w3, w4)
+		# returns a tuple
+		for key_data in self._n_state():
+			key = tuple([key_data[k_idx] for k_idx in range(self.state_size)])
+
 			if key in self.cache:
 				# append word to existing key
-				self.cache[key].append(w5)
+				self.cache[key].append(key_data[self.state_size])
 			else:
 				# add new key with word
-				self.cache[key] = [w5]
+				self.cache[key] = [key_data[self.state_size]]
 
 	def generate_markov_text(self, size=100):
-		seed = np.random.randint(0, self.word_size-5)
-		# initial key is (w1, w2, w3, w4)
-		w1, w2, w3, w4 = self.words[seed], self.words[seed+1], self.words[seed+2], self.words[seed+3]
-		gen_words = [w1, w2, w3, w4]
+		# pick random words
+		seed = np.random.randint(0, self.word_size-self.state_size+1)
+		# initial key
+		word_key = [self.words[seed + idx] for idx in range(self.state_size)]
+		# w1, w2, w3, w4 = self.words[seed], self.words[seed+1], self.words[seed+2], self.words[seed+3]
+		gen_words = word_key
 		for i in xrange(size):
 			# try to use the key
 			try:
-				w1, w2, w3, w4 = w2, w3, w4, np.random.choice(self.cache[(w1, w2, w3, w4)])
-				gen_words.append(w4)
+				# get next word
+				next_word = np.random.choice(self.cache[tuple(word_key)])
+
+				# construct key for next iteration
+				word_key = [word_key[idx+1] for idx in range(self.state_size-1)]
+				word_key.append(next_word)
+
+				# append new word
+				gen_words.append(next_word)
 			except Exception as e:
 				# start over with new start initial keys
-				w1, w2, w3, w4 = self.words[seed], self.words[seed+1], self.words[seed+2], self.words[seed+3]
+				word_key = [self.words[seed + idx] for idx in range(self.state_size)]
 				continue
 		return ' '.join(gen_words)
 

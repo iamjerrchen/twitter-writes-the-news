@@ -44,12 +44,10 @@ def main():
     for twt in tweets:
         tweet_text += twt.clean_text() + ". "
 
-    markov = markov_generator.markov_text_generator(tweet_text)
-    sentence = markov.generate_markov_text(100)
+    markov = markov_generator.markov_text_generator(tweet_text, args.state_size)
+    sentence = markov.generate_markov_text(args.max_words)
     print sentence
 
-
-    
 
 if __name__ == '__main__':
     main()
