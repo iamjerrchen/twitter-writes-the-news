@@ -1,6 +1,10 @@
 import parser
 import ConfigParser
-import twitter
+import tweepy
+
+from tweepy.streaming import StreamListener
+from tweepy import OAuthHandler
+from tweepy import Stream
 
 CONFIG="configuration/keys.ini"
 def main():
@@ -15,14 +19,8 @@ def main():
     access_secret = config.get("keys", "AccessSecret")
 
     # Verify credentials
-    api = twitter.Api(consumer_key, consumer_secret, access_token, access_secret)
-    print api.VerifyCredentials()
-
-    # Sample code that gets and prints stream
-    stream = api.GetStreamFilter(track=["hello"])
-    while True:
-    	for tweet in stream:
-    		print (tweet)
+    auth = OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_secret)
 
 if __name__ == '__main__':
     main()
