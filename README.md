@@ -16,12 +16,14 @@ Developed during HackIllinois 2018.
 ## Setup and Install
 1) Clone the repository:
 
-```git clone https://github.com/jerr-chen/twitter-writes-the-news.git```
-
-2) Get the required packages:
-
-```pip install -r requirements.txt```
+```
+	git clone https://github.com/jerr-chen/twitter-writes-the-news.git``
+	pip install -r requirements.txt
+```
 
 3) Simple command to run the application with `keyword = "lol"`, `max_tweets = 100`, and `timeout = 1 minute`
 
-```python src/main.py --keyword lol --max_tweets 100 --timeout 1```
+```
+	python src/main.py --keyword lol --max_tweets 100 --timeout 1
+
+```
