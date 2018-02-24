@@ -13,13 +13,14 @@ Developed during HackIllinois 2018.
 * Developed in Python 2
 
 ## Setup and Install
-pip install tweepy
-pip install nltk
+Get the required packages:
+	`pip install -r requirements.txt`
 
-	python -i
+You need to install these within nltk:
+	`python -i
 	import nltk
 	nltk.download('stopwords')
-	exit()
+	exit()`
 
 
 
