@@ -17,10 +17,12 @@ Get the required packages:
 	`pip install -r requirements.txt`
 
 You need to install these within nltk:
-	`python -i
+	```
+	python -i
 	import nltk
 	nltk.download('stopwords')
-	exit()`
+	exit()
+	```
 
 
 
