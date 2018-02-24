@@ -12,7 +12,7 @@ from tweepy import Stream
 CONFIG="configuration/keys.ini"
 def main():
 
-	# Parse arguments from command line
+    # Parse arguments from command line
     args = parser.get_args()
     config = ConfigParser.ConfigParser()
 
@@ -38,10 +38,12 @@ def main():
     print "Collecting tweets..."
     stream.filter(track=args.keywords)
 
-    # TEST: print tweets
+    tweet_text = u""
+
     for twt in tweets:
-        twt.disp()
-        print
+        tweet_text += twt.clean_text() + "\n"
+
+    print tweet_text
 
 if __name__ == '__main__':
     main()

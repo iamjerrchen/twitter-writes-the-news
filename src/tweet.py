@@ -18,3 +18,18 @@ class Tweet:
         print u"tweet: {0}".format(self.text)
         print u"location: {0}".format(self.location)
 
+    def clean_text(self):
+        cleaned = self.text
+        # Remove RT
+        cleaned = cleaned.replace("RT", "")
+
+        words = cleaned.split(" ")
+        cleaned_words = []
+        for word in words:
+            if not "@" in word and not "http" in word:
+                cleaned_words.append(word)
+
+        cleaned = " ".join(cleaned_words)
+
+        return cleaned
+

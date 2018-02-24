@@ -15,10 +15,12 @@ class stream_listener(tweepy.StreamListener):
         if (self.curr_tweets < self.max_tweets):
             try:
                 parsed_tweet = Tweet(data)
+            # Silently ignore errors
             except KeyError as e:
                 return True
 
             if parsed_tweet.lang == "en" and not parsed_tweet.truncated:
+                print parsed_tweet.lang
                 self.tweets.append(parsed_tweet)
                 self.curr_tweets += 1
                 print "Tweets collected: " + str(self.curr_tweets)
