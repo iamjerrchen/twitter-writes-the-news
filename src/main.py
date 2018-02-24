@@ -14,8 +14,15 @@ def main():
     access_token = config.get("keys", "AccessToken")
     access_secret = config.get("keys", "AccessSecret")
 
+    # Verify credentials
     api = twitter.Api(consumer_key, consumer_secret, access_token, access_secret)
     print api.VerifyCredentials()
+
+    # Sample code that gets and prints stream
+    stream = api.GetStreamFilter(track=["hello"])
+    while True:
+    	for tweet in stream:
+    		print (tweet)
 
 if __name__ == '__main__':
     main()
