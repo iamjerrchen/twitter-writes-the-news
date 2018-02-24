@@ -11,6 +11,10 @@ class Tweet:
         self.verified = json_tweet["user"]["verified"]
         self.lang = json_tweet["user"]["lang"]
         self.truncated = json_tweet["truncated"]
+        print "==============="
+        print self.lang
+        print self.text
+        print "==============="
 
     def disp(self):
         print u"name: {0}".format(self.screen_name)
@@ -19,14 +23,16 @@ class Tweet:
         print u"location: {0}".format(self.location)
 
     def clean_text(self):
-        cleaned = self.text
+        cleaned = self.text.strip()
+        cleaned = ''.join([i if ord(i) < 128 else '' for i in cleaned])
         # Remove RT
         cleaned = cleaned.replace("RT", "")
+        cleaned = cleaned.replace("#", "")
 
         words = cleaned.split(" ")
         cleaned_words = []
         for word in words:
-            if not "@" in word and not "http" in word:
+            if not "@" in word and not "http" in word and not "..." in word:
                 cleaned_words.append(word)
 
         cleaned = " ".join(cleaned_words)
