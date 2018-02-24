@@ -7,8 +7,8 @@ Developed during HackIllinois 2018.
 
 ## Brainstorm
 * User inputs keyword
-* Application uses real-time tweets to create a headline and story based off of the tweets
-	* Real-time tweet API used
+* Application uses real-time tweets to create a headline and story based off of tweets related to the keyword
+	* Real-time tweet REST API used
 * Hosted locally
 * Developed in Python 2
 
