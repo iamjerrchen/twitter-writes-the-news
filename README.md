@@ -12,6 +12,17 @@ Developed during HackIllinois 2018.
 * Hosted locally (terminal)
 * Developed in Python 2
 
+## Setup and Install
+pip install tweepy
+pip install nltk
+
+	python -i
+	import nltk
+	nltk.download('stopwords')
+	exit()
+
+
+
 ### Module Explanation
 #### main
 * Top level module to run the program
