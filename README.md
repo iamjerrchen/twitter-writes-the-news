@@ -8,7 +8,7 @@ Developed during HackIllinois 2018.
 ## Details
 * User inputs keyword
 * Application uses real-time tweets to create a headline and story based off of tweets related to the keyword
-	* Real-time tweet REST API used
+	* Real-time tweet REST API used (tweepy)
 * Hosted locally (terminal)
 * Developed in Python 2
 
@@ -27,6 +27,9 @@ Developed during HackIllinois 2018.
 
 #### parser
 * Parses arguments from the user input in the terminal when running the application
+
+#### stream_listener
+* Uses Tweepy to collect a stream of tweets based on user parameters
 
 ## Future Ideas
 * Implement a web client
