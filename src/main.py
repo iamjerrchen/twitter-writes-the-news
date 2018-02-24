@@ -1,5 +1,6 @@
 import parser
 import ConfigParser
+from stream_listener import stream_listener
 import tweepy
 
 from tweepy.streaming import StreamListener
@@ -21,6 +22,17 @@ def main():
     # Verify credentials
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_secret)
+
+    # Testing stream listener
+    tweets = []
+    testListener = stream_listener(tweets, 100, 100)
+    stream = tweepy.Stream(auth = auth, listener=testListener)
+
+    stream.filter(track=["lol"])
+    print len(tweets)
+    for tweet in tweets:
+    	print tweet
+    	print
 
 if __name__ == '__main__':
     main()
