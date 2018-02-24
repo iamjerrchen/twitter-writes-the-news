@@ -1,9 +1,9 @@
 import numpy as np
 
 class markov_text_generator:
-	def __init__(self, text, state_size):
+	def __init__(self, text):
 		self.cache = {} # dictionary to predict next word
-		self.state_size = state_size # 
+		#self.state_size = state_size # 
 		self.words = text.split()
 		self.word_size = len(self.words)
 		self.database() # populate dictionary with words

@@ -1,6 +1,8 @@
 import argparse
 import parser
 import ConfigParser
+import text_manipulator
+import markov_generator
 from stream_listener import stream_listener
 from tweet import Tweet
 import tweepy
@@ -43,7 +45,12 @@ def main():
     for twt in tweets:
         tweet_text += twt.clean_text() + ". "
 
-    print tweet_text
+    markov = markov_generator.markov_text_generator(tweet_text)
+    sentence = markov.generate_markov_text(100)
+    print sentence
+
+
+    
 
 if __name__ == '__main__':
     main()

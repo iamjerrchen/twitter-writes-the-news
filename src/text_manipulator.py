@@ -21,8 +21,7 @@ class text_manipulator:
 
 def generate_sentence(text):
 	text_model = markovify.Text(text)
-	for i in range(5):
-		print(text_model.make_short_sentence(140))
+	return text_model.make_sentence()
 
 
 
