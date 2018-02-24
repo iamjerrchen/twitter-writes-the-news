@@ -11,6 +11,16 @@ Developed during HackIllinois 2018.
 - Locally developed (for time being)
 - Develop in Python 2
 
+### Module explanation
+#### main
+* Top level module to run the program
+
+#### twitter
+* Module that makes the POST calls to twitter and returns the JSON data
+
+#### article
+* Module that constructs the article
+
 ## Future ideas
 * Web client
 * Save articles
