@@ -38,10 +38,10 @@ def main():
     print "Collecting tweets..."
     stream.filter(track=args.keywords)
 
-    tweet_text = u""
+    tweet_text = ""
 
     for twt in tweets:
-        tweet_text += twt.clean_text() + "\n"
+        tweet_text += twt.clean_text() + ". "
 
     print tweet_text
 

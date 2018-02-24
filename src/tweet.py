@@ -24,10 +24,12 @@ class Tweet:
 
     def clean_text(self):
         cleaned = self.text.strip()
-        cleaned = ''.join([i if ord(i) < 128 else '' for i in cleaned])
-        # Remove RT
+        cleaned = cleaned.replace("\n", ".")
         cleaned = cleaned.replace("RT", "")
         cleaned = cleaned.replace("#", "")
+
+        # Clean up unicode
+        cleaned = ''.join([i if ord(i) < 128 else '' for i in cleaned])
 
         words = cleaned.split(" ")
         cleaned_words = []
