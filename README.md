@@ -18,6 +18,9 @@ Developed during HackIllinois 2018.
 #### twitter
 * Module that makes the POST calls to twitter and returns the JSON data
 
+#### tweet
+* Module that represents a single tweet
+
 #### article
 * Module that constructs the article
 
