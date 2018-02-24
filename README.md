@@ -25,6 +25,9 @@ Developed during HackIllinois 2018.
 #### article
 * Module that constructs the article
 
+#### parser
+* Parses arguments from the user input in the terminal when running the application
+
 ## Future Ideas
 * Implement a web client
 * Save articles
