@@ -1,6 +1,7 @@
 import parser
 import ConfigParser
 from stream_listener import stream_listener
+from tweet import Tweet
 import tweepy
 
 from tweepy.streaming import StreamListener
@@ -25,14 +26,14 @@ def main():
 
     # Testing stream listener
     tweets = []
-    testListener = stream_listener(tweets, 100, 100)
-    stream = tweepy.Stream(auth = auth, listener=testListener)
+    testListener = stream_listener(tweets, 10)
+    stream = tweepy.Stream(auth=auth, listener=testListener, timeout=30)
 
-    stream.filter(track=["lol"])
-    print len(tweets)
-    for tweet in tweets:
-    	print tweet
-    	print
+    stream.filter(track=["donald trump"])
+
+    for twt in tweets:
+        twt.disp()
+        print
 
 if __name__ == '__main__':
     main()
