@@ -5,11 +5,11 @@ A facetious application that will generate (hopefully) hilarious articles from r
 
 Developed during HackIllinois 2018.
 
-## Brainstorm
+## Details
 * User inputs keyword
 * Application uses real-time tweets to create a headline and story based off of tweets related to the keyword
 	* Real-time tweet REST API used
-* Hosted locally
+* Hosted locally (terminal)
 * Developed in Python 2
 
 ### Module Explanation
@@ -17,7 +17,7 @@ Developed during HackIllinois 2018.
 * Top level module to run the program
 
 #### twitter
-* Module that makes the POST calls to twitter and returns the JSON data
+* Wrapper module that makes the POST calls to twitter and returns the JSON data
 
 #### tweet
 * Module that represents a single tweet
