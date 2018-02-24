@@ -3,12 +3,13 @@
 ## Purpose
 A facetious application that will generate (hopefully) hilarious articles from recent tweets.
 
-Developed during HackIllinois 2018.
+Under development during HackIllinois 2018.
 
 ## Details
 * User inputs keyword
 * Application uses real-time tweets to create a headline and story based off of tweets related to the keyword
 	* Real-time tweet REST API used (tweepy)
+* Uses Markov chains to generate headline and article text
 * Hosted locally (terminal)
 * Developed in Python 2
 
