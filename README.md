@@ -15,7 +15,7 @@ Developed during HackIllinois 2018.
 
 ## Setup and Install
 1) Clone the repository:
-	`git clone https://github.com/jerr-chen/twitter-writes-the-news.git'
+`git clone https://github.com/jerr-chen/twitter-writes-the-news.git'
 
 2) Get the required packages:
-	`pip install -r requirements.txt`
+`pip install -r requirements.txt`
