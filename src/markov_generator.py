@@ -39,9 +39,3 @@ class markov_text_generator:
 			gen_words.append(w2)
 		return ' '.join(gen_words)
 
-
-with open("random.txt") as f:
-	data = f.read()
-	markov = markov_text_generator(data)
-	print markov.generate_markov_text()
-
