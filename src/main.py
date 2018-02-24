@@ -1,5 +1,6 @@
 import parser
 import ConfigParser
+import twitter
 
 CONFIG="configuration/keys.ini"
 def main():
@@ -8,10 +9,13 @@ def main():
 
     # Config 
     config.read(CONFIG)
-    config.get("keys", "ConsumerKey")
-    config.get("keys", "ConsumerSecret")
-    config.get("keys", "AccessToken")
-    config.get("keys", "AccessSecret")
+    consumer_key = config.get("keys", "ConsumerKey")
+    consumer_secret = config.get("keys", "ConsumerSecret")
+    access_token = config.get("keys", "AccessToken")
+    access_secret = config.get("keys", "AccessSecret")
+
+    api = twitter.Api(consumer_key, consumer_secret, access_token, access_secret)
+    print api.VerifyCredentials()
 
 if __name__ == '__main__':
     main()
