@@ -11,10 +11,15 @@ from tweepy import Stream
 
 CONFIG="configuration/keys.ini"
 def main():
+
+	# Parse arguments from command line
     args = parser.get_args()
     config = ConfigParser.ConfigParser()
 
-    # Config 
+    if args.keywords is None or len(args.keywords) == 0:
+        raise argparse.ArgumentTypeError("No keywords!")
+
+    # Read in from Config file
     config.read(CONFIG)
     consumer_key = config.get("keys", "ConsumerKey")
     consumer_secret = config.get("keys", "ConsumerSecret")
@@ -25,17 +30,15 @@ def main():
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_secret)
 
-    if args.keywords is None or len(args.keywords) == 0:
-        raise argparse.ArgumentTypeError("No keywords!")
-
-    # Testing stream listener
+    # Collect tweets based on arguments (or default vals)
     tweets = []
-    testListener = stream_listener(tweets, args.max_tweets)
-    stream = tweepy.Stream(auth=auth, listener=testListener, timeout=args.timeout*60)
+    streamListener = stream_listener(tweets, args.max_tweets)
+    stream = tweepy.Stream(auth=auth, listener=streamListener, timeout=args.timeout*60)
 
     print "Collecting tweets..."
     stream.filter(track=args.keywords)
 
+    # TEST: print tweets
     for twt in tweets:
         twt.disp()
         print
