@@ -20,9 +20,13 @@ class text_manipulator:
 # man.remove_stopwords("a long string of text about him and her")
 
 def generate_sentence(text):
-	text_model = markovify.Text(text)
+	text_model = markovify.Text(text, state_size=2)
 	for i in range(5):
-		print(text_model.make_short_sentence(140))
+		print(text_model.make_short_sentence(100))
 
 
+with open("random.txt") as f:
+	text1 = f.read()
+
+generate_sentence(text1)
 
