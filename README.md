@@ -1,4 +1,4 @@
-# twitter-writes-the-news
+# Twitter Writes The News
 
 ## Purpose
 A facetious application that will generate (hopefully) hilarious articles from recent tweets.
