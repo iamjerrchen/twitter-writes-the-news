@@ -17,8 +17,7 @@ Get the required packages:
 	`pip install -r requirements.txt`
 
 You need to install these within nltk:
-	```
-	python -i
+	```python -i
 	import nltk
 	nltk.download('stopwords')
 	exit()
@@ -29,9 +28,6 @@ You need to install these within nltk:
 ### Module Explanation
 #### main
 * Top level module to run the program
-
-#### twitter
-* Wrapper module that makes the POST calls to twitter and returns the JSON data
 
 #### tweet
 * Module that represents a single tweet
