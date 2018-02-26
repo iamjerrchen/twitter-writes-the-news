@@ -24,7 +24,8 @@ pip install -r requirements.txt
 2) Adding Twitter keys for Tweepy:
 
 Add the following .ini file with the Twitter account's keys: src/configuration/keys.ini
-Content:
+
+Content (replace XXXX with value of keys):
 ```
 [keys]
 ConsumerKey=XXXX
