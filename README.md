@@ -21,7 +21,19 @@ git clone https://github.com/jerr-chen/twitter-writes-the-news.git``
 pip install -r requirements.txt
 ```
 
-2) Simple command to run the application with `keyword = "lol"`, `max_tweets = 100`, and `timeout = 1 minute`
+2) Adding Twitter keys for Tweepy:
+
+Add the following .ini file with the Twitter account's keys: src/configuration/keys.ini
+Content:
+```
+[keys]
+ConsumerKey=XXXX
+ConsumerSecret=XXXX
+AccessToken=XXXX
+AccessSecret=XXXX
+```
+
+3) Simple command to run the application with `keyword = "lol"`, `max_tweets = 100`, and `timeout = 1 minute`
 
 ```
 python src/main.py --keyword lol --max_tweets 100 --timeout 1
